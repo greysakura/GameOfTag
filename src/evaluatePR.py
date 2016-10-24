@@ -25,7 +25,7 @@ def evaluatePR(GTs, PREDs, topK, typeIn):
     for n in range(GTs.shape[1]):
         confidence = PREDs[:, n]
         si = np.argsort(-confidence).flatten().tolist()[0:topK]
-        hardPREDs[si, n] = 1
+        hardPREDs[si, n] = 1.0
 
     if typeIn == 'tag':
         precInd = np.divide(np.sum(np.multiply(hardPREDs, GTs), axis=1), np.maximum(np.sum(hardPREDs, axis=1), eps))
