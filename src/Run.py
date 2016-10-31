@@ -1,18 +1,21 @@
 import numpy as np
 import random
 import h5py
-from numpy import genfromtxt
+# from numpy import genfromtxt
 from fasttag_cross import fasttag_cross
 from evaluatePR import resultPR, evaluatePR
 from scipy.io import loadmat
+from sklearn.metrics.pairwise import cosine_similarity
+from perf_metric4Label import perf_metric4Label
+
 
 if __name__ == "__main__":
     numval = 1000
     topK = 5
 
     # type_file_input = 'mat'
-    # dataset_to_test = 'nuswide'
-    dataset_to_test = 'flickr30k'
+    dataset_to_test = 'nuswide'
+    # dataset_to_test = 'flickr30k'
 
     MatFile = None
 
@@ -38,8 +41,6 @@ if __name__ == "__main__":
         print tTe.shape
         print yTr.shape
         print yTe.shape
-
-        raw_input()
 
         valIdx = random.sample(range(nTr), numval)
         valIdx.sort()
@@ -114,8 +115,6 @@ if __name__ == "__main__":
     queryW = W.dot(xTe)
     queryU = U.dot(tTe)
 
-    print '\n'
-
     resultsAllTag = evaluatePR(yTe, (queryW + queryU), topK, 'tag')
     print ('... For tag measure from all modality: \n\t P %f, R %f, N+ %d \n'
            % (resultsAllTag.prec, resultsAllTag.rec, resultsAllTag.retrieved))
@@ -124,4 +123,23 @@ if __name__ == "__main__":
     print ('... For image measure from all modality: \n\t P %f, R %f, N+ %d \n'
            % (resultsAllImage.prec, resultsAllImage.rec, resultsAllImage.retrieved))
 
-    print 'Fin!'
+    # print 'Fin!'
+
+    ## Prediction step missing. Try using Tensorflow to do that?
+
+    # evaluate with cross-modal measures
+    dbW = W.dot(xTr)
+    dbU = U.dot(tTr)
+
+    # I to T
+    dist_WtoU = 1.0 - cosine_similarity(queryW.transpose(), dbU.transpose())
+    # T to I
+    dist_UtoW = 1.0 - cosine_similarity(queryU.transpose(), dbW.transpose())
+
+    print dist_WtoU.shape
+    print dist_UtoW.shape
+
+    MAP_I2T = perf_metric4Label(yTr.transpose(), yTe.transpose(), dist_WtoU.transpose())
+    MAP_T2I = perf_metric4Label(yTr.transpose(), yTe.transpose(), dist_UtoW.transpose())
+
+    print ('I2T: %f, T2I: %f, \n' %(MAP_I2T, MAP_T2I))
