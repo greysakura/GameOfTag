@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9855c536-85b6-46a2-a916-6eefaf34e12d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Run.py" afterPath="$PROJECT_DIR$/src/Run.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/perf_metric4Label.py" afterPath="$PROJECT_DIR$/src/perf_metric4Label.py" />
     </list>
     <ignored path="GameOfTag.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -502,7 +500,14 @@
       <option name="project" value="LOCAL" />
       <updated>1477904470163</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="perf_metric4Label.py&#10;New version of ismember...&#10;Still slow">
+      <created>1477985958121</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1477985958121</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -544,7 +549,8 @@
     <MESSAGE value="some correction on evaluatePR" />
     <MESSAGE value="Flickr30k" />
     <MESSAGE value="perf_metric4Label.py&#10;Bit slow..." />
-    <option name="LAST_COMMIT_MESSAGE" value="perf_metric4Label.py&#10;Bit slow..." />
+    <MESSAGE value="perf_metric4Label.py&#10;New version of ismember...&#10;Still slow" />
+    <option name="LAST_COMMIT_MESSAGE" value="perf_metric4Label.py&#10;New version of ismember...&#10;Still slow" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
