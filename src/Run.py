@@ -136,10 +136,12 @@ if __name__ == "__main__":
     # T to I
     dist_UtoW = 1.0 - cosine_similarity(queryU.transpose(), dbW.transpose())
 
-    print dist_WtoU.shape
-    print dist_UtoW.shape
+    # print dist_WtoU.shape
+    # print dist_UtoW.shape
+
+    # print dist_WtoU == dist_UtoW
 
     MAP_I2T = perf_metric4Label(yTr.transpose(), yTe.transpose(), dist_WtoU.transpose())
     MAP_T2I = perf_metric4Label(yTr.transpose(), yTe.transpose(), dist_UtoW.transpose())
 
-    print ('I2T: %f, T2I: %f, \n' %(MAP_I2T, MAP_T2I))
+    print ('I2T: %f, T2I: %f \n' %(MAP_I2T, MAP_T2I))
