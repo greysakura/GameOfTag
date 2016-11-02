@@ -63,8 +63,6 @@ def optBWU_cross(Lfreq, L, alpha, noise, maxLayer, weights, invTr, Xb, intTr, Tb
             predW = W.dot(Xb)
             predU = U.dot(Tb)
 
-            # Maybe B has some problems
-
             # here we compute for the new B with both visual and text features
             B = alpha * P + sigmav * predW.dot(weightedMb) + sigmat * predU.dot(weightedMb)
             B = B.dot(inv(alpha * Q + alpha * mylambda * iB + (sigmav + sigmat) * Sl))

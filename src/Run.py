@@ -58,9 +58,6 @@ if __name__ == "__main__":
 
         tmpfile = loadmat('../data/Flickr30k/index_training_testing/3k_ind.mat')
 
-        # valIdx = tmpfile['devind'][:] - 1
-        # valIdx = valIdx.astype(int).flatten().tolist()
-
         testind = tmpfile['testind'][:] - 1
         testind = testind.astype(int).flatten().tolist()
 
@@ -123,10 +120,6 @@ if __name__ == "__main__":
     print ('... For image measure from all modality: \n\t P %f, R %f, N+ %d \n'
            % (resultsAllImage.prec, resultsAllImage.rec, resultsAllImage.retrieved))
 
-    # print 'Fin!'
-
-    ## Prediction step missing. Try using Tensorflow to do that?
-
     # evaluate with cross-modal measures
     dbW = W.dot(xTr)
     dbU = U.dot(tTr)
@@ -135,11 +128,6 @@ if __name__ == "__main__":
     dist_WtoU = 1.0 - cosine_similarity(queryW.transpose(), dbU.transpose())
     # T to I
     dist_UtoW = 1.0 - cosine_similarity(queryU.transpose(), dbW.transpose())
-
-    # print dist_WtoU.shape
-    # print dist_UtoW.shape
-
-    # print dist_WtoU == dist_UtoW
 
     MAP_I2T = perf_metric4Label(yTr.transpose(), yTe.transpose(), dist_WtoU.transpose())
     MAP_T2I = perf_metric4Label(yTr.transpose(), yTe.transpose(), dist_UtoW.transpose())

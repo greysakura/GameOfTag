@@ -31,7 +31,6 @@ def optB(Lfreq, L, weights, noise, maxLayers, mylambda):
         else:
             P = np.multiply(Sl[0:-1, :], np.repeat(np.transpose(q), k, axis=0))
 
-        # print 'This is Marker 3'
         B = P.dot(inv(Q + mylambda * iB))
 
         B0s.append(B)
