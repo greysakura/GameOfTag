@@ -116,7 +116,6 @@ def multiHyperTunning_cross(xTr, tTr, yTr, xVal, tVal, yVal, topK):
                         improved = True
 
         if not improved:
-            print 'break out!'
             break
 
         outHyperparams.append(tmpHyperparams)

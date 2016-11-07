@@ -26,7 +26,7 @@ def fasttag_cross(xTr, tTr, yTr, xTe, tTe, yTe, topK, valIdx):
     outHyperparams = multiHyperTunning_cross(xTr[:, trainIdx], tTr[:, trainIdx], yTr[:, trainIdx], xTr[:, valIdx],
                                              tTr[:, valIdx], yTr[:, valIdx], topK)
 
-    print '\nmultiHyperTunning Finished!\n'
+    print 'multiHyperTunning Finished!\n'
 
     iW = dia_matrix((np.ones(d - 1), np.array([0])), shape=(d, d))
     iU = dia_matrix((np.ones(m - 1), np.array([0])), shape=(m, m))

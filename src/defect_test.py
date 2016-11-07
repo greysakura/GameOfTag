@@ -10,7 +10,7 @@ def incomplete_and_defect(MatIn):
     ## 2 steps.
 
     incomplete_ratio = 0.2
-    defect_ratio = 0.03
+    defect_ratio = 0.2
 
     for i in range(MatIn.shape[0]):
 
@@ -30,10 +30,9 @@ def incomplete_and_defect(MatIn):
 
         ## Step 2: Defect the mat. On ratio,  Take at least one 0s to 1.
         if NumOf0 > 0:
-            ToBe1 = max(1, int(defect_ratio * NumOf0))
+            ToBe1 = max(1, int(defect_ratio * NumOf1))
             random.shuffle(Location_0s.transpose())  # Need to transpose!
             MatIn[i, :][Location_0s[:, 0:ToBe1]] = [1] * ToBe1
-
 
     return MatIn
 
